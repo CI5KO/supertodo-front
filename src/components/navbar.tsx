@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useTheme as useNextTheme } from "next-themes";
+import { Switch, Link, useTheme } from "@nextui-org/react";
 
-export default function Navbar() {
+export default function Navbar({ overlap = false }) {
   const [menu, setMenu] = useState<boolean>(true);
+  const { setTheme } = useNextTheme();
+  const { isDark } = useTheme();
   return (
-    <nav className="navbar_main">
+    <nav className={overlap ? "fixed w-full" : ""}>
       <div className="navbar_div">
         <span className="navbar_title">SuperTODO</span>
         <button className="navbar_button" onClick={(_) => setMenu(!menu)}>
@@ -14,19 +18,20 @@ export default function Navbar() {
         <div className={`${menu ? "" : "hidden"} navbar_items`}>
           <ul className="navbar_ul">
             <li>
-              <a href="#" className="navbar_link">
+              <Link color="primary" href="#" className="navbar_link">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="navbar_link">
+              <Link color="primary" href="#" className="navbar_link">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="navbar_link">
-                Services
-              </a>
+              <Switch
+                checked={isDark}
+                onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+              />
             </li>
           </ul>
         </div>
