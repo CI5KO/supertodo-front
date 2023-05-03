@@ -9,7 +9,7 @@ export default function Home() {
       <Navbar overlap />
       <div className="container mx-auto max-w-[750px] h-screen grid">
         {/* prettier-ignore */}
-        <div className={`w-[500px] h-[500px] self-center justify-self-center rounded-lg ${isDark ? "bg-[#8A4FFF]" : "bg-[#FF7477]"}`}
+        <div className={`w-4/5 h-3/5 md:w-[500px] md:h-[500px] self-center justify-self-center rounded-lg ${isDark ? "bg-[#8A4FFF]" : "bg-[#FF7477]"}`}
         >
           <Text className="text-center">This is a simple text!</Text>
         </div>
